@@ -17,7 +17,7 @@ A simple backend API for a **Wedding Coordinator Marketplace MVP**, built with *
 ## 🚀 API Documentation
 
 ### Base URL
-
+https://github.com/dikehprosper/weddly-backend
 
 ---
 ### Endpoints
@@ -30,24 +30,173 @@ A simple backend API for a **Wedding Coordinator Marketplace MVP**, built with *
 
 
 
+
 ---
 ### GET `/coordinators`
 Fetches a list of all available wedding coordinators.
 
+#### Request
+GET /api/coordinators
 
-##### Response
+#### Response
+##### Successful Response
+
+###### Success
 ```json
 [
   {
-    "_id": "id",
-    "name": "Jane Doe",
-    "location": "Lagos, Nigeria",
-    "price": 3000,
-    "profilePhoto": "https://...",
-    "bio": "Experienced planner...",
-    "unavailableDates": ["2025-07-20", "2025-08-01"]
-  }
+  "name": "Jane Doe",
+  "location": "Lagos, Nigeria",
+  "price": 3000,
+  "profilePhoto": "https://...",
+  "bio": "Experienced planner...",
+  "rating": 4.8,
+  "reviews": 25,
+  "experience": "7 years",
+  "specialty": "Luxury Weddings",
+  "languages": ["English", "Yoruba"],
+  "unavailableDates": ["2025-07-20", "2025-08-01"]
+},....
 ]
+```
+##### Status Code
+200 OK
+
+
+##### Possible Error Responses
+
+###### 500 Internal Server Error
+```json
+{
+  "message": "Server error. Please try again later."
+}
+```
+##### Status Code
+500 Internal Server Error
+
+###### 404 Not Found
+```json
+{
+  "message": "No coordinators found."
+}
+```
+##### Status Code
+404 Not Found
+
+
+
+
+---
+### GET `/coordinators/:id`
+Fetches detailed information of a specific coordinator using their unique ID.
+
+#### Request
+GET /api/coordinators/64c1exampleId
+
+#### Response
+##### Successful Response
+
+###### Success
+```json
+{
+  "_id": "64c1exampleId",
+  "name": "Jane Doe",
+  "location": "Lagos, Nigeria",
+  "price": 3000,
+  "profilePhoto": "https://...",
+  "bio": "Experienced wedding planner with 5+ years of experience...",
+  "unavailableDates": ["2025-07-20", "2025-08-01"]
+}
+```
+##### Status Code
+200 OK
+
+
+##### Possible Error Responses
+
+###### 500 Internal Server Error
+```json
+{
+  "message": "Server error. Please try again later."
+}
+```
+##### Status Code
+500 Internal Server Error
+
+###### 404 Not Found
+```json
+{
+  "message": "coordinator not found."
+}
+```
+##### Status Code
+404 Not Found
+
+
+
+
+
+---
+### GET `/coordinators/:id`
+Fetches detailed information of a specific coordinator using their unique ID.
+
+#### Request
+POST /api/bookings
+Content-Type: application/json
+
+#### Request Body
+```json
+{
+  "coordinatorId": "64c1exampleId",
+  "name": "John Smith",
+  "email": "john@example.com",
+  "weddingDate": "2025-08-15",
+  "guestNumber": 150
+}
+```
+
+#### Responses
+##### Successful Response
+
+###### Success
+```json
+{
+  "message": "Booking successful",
+  "booking": {
+    "_id": "bookingId",
+    "coordinatorId": "64c1exampleId",
+    "name": "John Smith",
+    "email": "john@example.com",
+    "weddingDate": "2025-08-15",
+    "guestNumber": 150
+  }
+}
+```
+##### Status Code
+201 Created
+
+
+##### Possible Error Responses
+
+###### 500 Internal Server Error
+```json
+{
+  "message": "Failed to create booking. Please try again later."
+}
+```
+##### Status Code
+500 Internal Server Error
+
+
+###### 400 Bad Request
+```json
+{
+  "message": "Invalid booking data. Please check all fields and try again."
+}
+```
+##### Status Code
+400 Bad Request
+
 
 
 ## Project Structure
@@ -68,11 +217,10 @@ Fetches a list of all available wedding coordinators.
 
 
 
-
 ## Setup Instructions
 
 #### Clone the repo
-git clone https://github.com/dikehprosper/wedding-backend.git
+git clone https://github.com/dikehprosper/weddly-backend.git
 cd backend
 
 #### Install dependencies
