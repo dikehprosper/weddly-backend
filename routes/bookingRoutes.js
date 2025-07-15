@@ -3,6 +3,8 @@ const express = require('express');
 
 // Import the Booking model (MongoDB schema)
 const Booking = require('../models/Booking');
+// Import the Coordinator model
+const Coordinator = require('../models/Coordinator');
 
 // Create an Express Router instance
 const router = express.Router();
@@ -76,6 +78,12 @@ router.post('/', async (req, res) => {
         });
 
         await booking.save();
+
+        // Update coordinator's unavailableDates after successful booking
+        await Coordinator.findByIdAndUpdate(
+            coordinatorId,
+            { $addToSet: { unavailableDates: weddingDateMidnight } } // prevent duplicate entries
+        );
 
         // Log booking info for debugging/monitoring
         console.log('New booking created:', booking);

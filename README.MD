@@ -203,14 +203,24 @@ Content-Type: application/json
 ## Setup Instructions
 
 #### Clone the repo
+```bash
 git clone https://github.com/dikehprosper/weddly-backend.git
 cd backend
+```
 
 #### Install dependencies
+```bash
 npm install
+```
 
 #### Setup environment variables
 cp .env.example .env
+```bash
+# MongoDB connection string
+MONGO_URI=mongodb+srv://username:password@cluster0.mongodb.net/mydatabase
+# Port number for the server to listen on
+PORT=5001
+```
 
 #### Start development server
 npm run dev
@@ -218,14 +228,16 @@ npm run dev
 Backend runs on http://localhost:5001
 
 
-
-
-## Deployment
+### Deployment
 #### Backend: Render
 
 #### Database: MongoDB
 
+
 #### Author
-Prosper – [https://dikeprosper.vercel.app/]
-Twitter - [https://x.com/DikeProsper]
-Linkedin - [https://www.linkedin.com/in/dikeprosper]
+
+###### Prosper – [https://dikeprosper.vercel.app/]
+
+###### Twitter - [https://x.com/DikeProsper]
+
+###### Linkedin - [https://www.linkedin.com/in/dikeprosper]
