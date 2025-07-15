@@ -24,9 +24,9 @@ https://github.com/dikehprosper/weddly-backend
 
 | Method | Endpoint | Description |
 | ------- | -------- | ----------- |
-| GET | `/coordinators` | Fetch all coordinators |
-| GET | `/coordinators/:id` | Get specific coordinator details |
-| POST | `/bookings` | Create a booking |
+| GET | `/api/coordinators` | Fetch all coordinators |
+| GET | `/api/coordinators/:id` | Get specific coordinator details |
+| POST | `/api/bookings` | Create a booking |
 
 
 
@@ -223,15 +223,17 @@ PORT=5001
 ```
 
 #### Start development server
+```bash
 npm run dev
+```
 
 Backend runs on http://localhost:5001
 
 
-### Deployment
-#### Backend: Render
+#### Deployment
+Backend: Render
 
-#### Database: MongoDB
+Database: MongoDB
 
 
 #### Author
