@@ -5,7 +5,7 @@ A simple backend API for a **Wedding Coordinator Marketplace MVP**, built with *
 ---
 ## 📌 Features
 
-- 🗂️ Coordinator Listing (Name, Location, Price, Profile Photo)
+- 🗂️ Coordinator Listing (Name, Location, Price, Profile Photo, bio, rating, reviews, experience, specialty, languages, unavailableDates)
 - 📄 Coordinator Details (Bio, Availability)
 - 💌 Booking Request Submission
 - 🌐 REST API built with Express & Mongoose
@@ -32,7 +32,7 @@ https://github.com/dikehprosper/weddly-backend
 
 
 ---
-### GET `/coordinators`
+### GET `/api/coordinators`
 Fetches a list of all available wedding coordinators.
 
 #### Request
@@ -59,8 +59,7 @@ GET /api/coordinators
 },....
 ]
 ```
-##### Status Code
-200 OK
+##### Status Code: 200 OK
 
 
 ##### Possible Error Responses
@@ -71,8 +70,7 @@ GET /api/coordinators
   "message": "Server error. Please try again later."
 }
 ```
-##### Status Code
-500 Internal Server Error
+##### Status Code: 500 Internal Server Error
 
 ###### 404 Not Found
 ```json
@@ -80,14 +78,13 @@ GET /api/coordinators
   "message": "No coordinators found."
 }
 ```
-##### Status Code
-404 Not Found
+##### Status Code: 404 Not Found
 
 
 
 
 ---
-### GET `/coordinators/:id`
+### GET `/api/coordinators/:id`
 Fetches detailed information of a specific coordinator using their unique ID.
 
 #### Request
@@ -99,17 +96,20 @@ GET /api/coordinators/64c1exampleId
 ###### Success
 ```json
 {
-  "_id": "64c1exampleId",
-  "name": "Jane Doe",
+"name": "Jane Doe",
   "location": "Lagos, Nigeria",
   "price": 3000,
   "profilePhoto": "https://...",
-  "bio": "Experienced wedding planner with 5+ years of experience...",
+  "bio": "Experienced planner...",
+  "rating": 4.8,
+  "reviews": 25,
+  "experience": "7 years",
+  "specialty": "Luxury Weddings",
+  "languages": ["English", "Yoruba"],
   "unavailableDates": ["2025-07-20", "2025-08-01"]
 }
 ```
-##### Status Code
-200 OK
+##### Status Code: 200 OK
 
 
 ##### Possible Error Responses
@@ -120,8 +120,7 @@ GET /api/coordinators/64c1exampleId
   "message": "Server error. Please try again later."
 }
 ```
-##### Status Code
-500 Internal Server Error
+##### Status Code: 500 Internal Server Error
 
 ###### 404 Not Found
 ```json
@@ -129,16 +128,15 @@ GET /api/coordinators/64c1exampleId
   "message": "coordinator not found."
 }
 ```
-##### Status Code
-404 Not Found
+##### Status Code: 404 Not Found
 
 
 
 
 
 ---
-### GET `/coordinators/:id`
-Fetches detailed information of a specific coordinator using their unique ID.
+### POST `/api/bookings`
+Creates a new booking for a wedding coordinator.
 
 #### Request
 POST /api/bookings
@@ -172,8 +170,7 @@ Content-Type: application/json
   }
 }
 ```
-##### Status Code
-201 Created
+##### Status Code: 201 Created
 
 
 ##### Possible Error Responses
@@ -184,36 +181,22 @@ Content-Type: application/json
   "message": "Failed to create booking. Please try again later."
 }
 ```
-##### Status Code
-500 Internal Server Error
+##### Status Code: 500 Internal Server Error
 
 
 ###### 400 Bad Request
-```json
-{
-  "message": "Invalid booking data. Please check all fields and try again."
-}
-```
-##### Status Code
-400 Bad Request
+###### Possible validation error messages returned in the response body:
+| Message                                                 | Meaning                                                                  |
+| ------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `"All fields are required."`                            | One or more required fields (`coordinatorId`, `name`, etc.) are missing. |
+| `"Invalid email format."`                               | The email provided does not match the required email pattern.            |
+| `"Guest number must be a positive number."`             | `guestNumber` is missing, zero, negative, or not a number.               |
+| `"Invalid wedding date format."`                        | The `weddingDate` is not a valid date string or format.                  |
+| `"Wedding date cannot be today or in the past."`        | The date is before or equal to today — booking must be future-only.      |
+| `"Coordinator is already booked on the selected date."` | The coordinator already has a booking on that date.                      |
 
+##### Status Code: 400 Bad Request
 
-
-## Project Structure
-
- backend/
-│
-├── models/
-│   ├── Coordinator.js
-│   └── Booking.js
-│
-├── routes/
-│   ├── coordinatorRoutes.js
-│   └── bookingRoutes.js
-│
-├── .env
-├── server.js
-└── package.json
 
 
 
@@ -232,7 +215,7 @@ cp .env.example .env
 #### Start development server
 npm run dev
 
-Backend runs on http://localhost:5000
+Backend runs on http://localhost:5001
 
 
 

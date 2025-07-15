@@ -1,32 +1,51 @@
-// Import core packages
+// Import Core Packages
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config(); // Loads environment variables from .env file
+const dotenv = require('dotenv');
 
-// Import route handlers
+// Load Environment Variables
+dotenv.config(); // Automatically loads variables from .env file into process.env
+
+// Import Route Handlers
 const coordinatorRoutes = require('./routes/coordinatorRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
 
-// Initialize Express app
+// Initialize Express App
 const app = express();
 
 // Middleware Setup
-app.use(cors()); // Enable Cross-Origin Resource Sharing
-app.use(express.json()); // Parse incoming JSON requests
+
+// Enable Cross-Origin Resource Sharing (CORS) for all requests
+app.use(cors());
+
+// Enable parsing of JSON payloads in incoming requests
+app.use(express.json());
+
+
+// Health Check Endpoint
+
+// Simple endpoint to verify server status
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ message: 'Server is running smoothly' });
+});
 
 // API Routes
-// Handles all requests related to wedding coordinators
+
+// Handles all coordinator-related API requests
 app.use('/api/coordinators', coordinatorRoutes);
 
-// Handles all requests related to bookings
+// Handles all booking-related API requests
 app.use('/api/bookings', bookingRoutes);
 
-// MongoDB Database Connection
+// Database Connection Setup
+
+// Connect to MongoDB using Mongoose
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB connected successfully'))
     .catch(err => console.error('MongoDB connection failed:', err));
 
-// Start Express Server
-const PORT = process.env.PORT || 5000;
+// Start the Express Server
+
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
