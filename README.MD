@@ -14,7 +14,7 @@ A simple backend API for a **Wedding Coordinator Marketplace MVP**, built with *
 
 
 ---
-## 🚀 API Documentation
+## API Documentation
 
 ### Base URL
 https://weddly-backend.onrender.com
@@ -41,7 +41,7 @@ GET /api/coordinators
 #### Response
 ##### Successful Response
 
-###### Success
+Success
 ```json
 [
   {
@@ -59,9 +59,12 @@ GET /api/coordinators
 },....
 ]
 ```
-##### Status Code: 200 OK
+Status Code: 200 OK
 
 
+
+
+---
 ##### Possible Error Responses
 
 ###### 500 Internal Server Error
@@ -70,8 +73,12 @@ GET /api/coordinators
   "message": "Server error. Please try again later."
 }
 ```
-##### Status Code: 500 Internal Server Error
+Status Code: 500 Internal Server Error
 
+
+
+
+---
 ###### 404 Not Found
 ```json
 {
@@ -90,10 +97,12 @@ Fetches detailed information of a specific coordinator using their unique ID.
 #### Request
 GET /api/coordinators/64c1exampleId
 
-#### Response
-##### Successful Response
 
-###### Success
+---
+#### Response
+##### Successful Responses:
+
+Success
 ```json
 {
 "name": "Jane Doe",
@@ -109,9 +118,12 @@ GET /api/coordinators/64c1exampleId
   "unavailableDates": ["2025-07-20", "2025-08-01"]
 }
 ```
-##### Status Code: 200 OK
+Status Code: 200 OK
 
 
+
+
+---
 ##### Possible Error Responses
 
 ###### 500 Internal Server Error
@@ -122,14 +134,16 @@ GET /api/coordinators/64c1exampleId
 ```
 ##### Status Code: 500 Internal Server Error
 
-###### 404 Not Found
+
+
+---
+404 Not Found
 ```json
 {
   "message": "coordinator not found."
 }
 ```
-##### Status Code: 404 Not Found
-
+Status Code: 404 Not Found
 
 
 
@@ -153,10 +167,11 @@ Content-Type: application/json
 }
 ```
 
+---
 #### Responses
-##### Successful Response
+##### Successful Response:
 
-###### Success
+Success
 ```json
 {
   "message": "Booking successful",
@@ -170,20 +185,25 @@ Content-Type: application/json
   }
 }
 ```
-##### Status Code: 201 Created
+Status Code: 201 Created
 
 
+
+
+---
 ##### Possible Error Responses
 
-###### 500 Internal Server Error
+500 Internal Server Error
 ```json
 {
   "message": "Failed to create booking. Please try again later."
 }
 ```
-##### Status Code: 500 Internal Server Error
+Status Code: 500 Internal Server Error
 
 
+
+---
 ###### 400 Bad Request
 ###### Possible validation error messages returned in the response body:
 | Message                                                 | Meaning                                                                  |
@@ -199,7 +219,7 @@ Content-Type: application/json
 
 
 
-
+---
 ## Setup Instructions
 
 #### Clone the repo

@@ -26,8 +26,8 @@ app.use(express.json());
 // Health Check Endpoint
 
 // Simple endpoint to verify server status
-app.get('/api/health', (req, res) => {
-    res.status(200).json({ message: 'Server is running smoothly' });
+app.get('/', (req, res) => {
+    res.status(200).json({ message: 'Weddly server is running smoothly' });
 });
 
 // API Routes
