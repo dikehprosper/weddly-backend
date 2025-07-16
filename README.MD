@@ -17,7 +17,7 @@ A simple backend API for a **Wedding Coordinator Marketplace MVP**, built with *
 ## 🚀 API Documentation
 
 ### Base URL
-https://github.com/dikehprosper/weddly-backend
+https://weddly-backend.onrender.com
 
 ---
 ### Endpoints
@@ -218,6 +218,7 @@ cp .env.example .env
 ```bash
 # MongoDB connection string
 MONGO_URI=mongodb+srv://username:password@cluster0.mongodb.net/mydatabase
+
 # Port number for the server to listen on
 PORT=5001
 ```
@@ -231,8 +232,8 @@ Backend runs on http://localhost:5001
 
 
 #### Deployment
+Frontend: Netlify
 Backend: Render
-
 Database: MongoDB
 
 
