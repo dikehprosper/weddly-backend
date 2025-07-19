@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 // Import Core Packages
 const express = require('express');
 const mongoose = require('mongoose');

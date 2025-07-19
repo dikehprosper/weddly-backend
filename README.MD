@@ -13,6 +13,24 @@ A simple backend API for a **Wedding Coordinator Marketplace MVP**, built with *
 
 
 
+### Live Demo
+
+|  App                               | Link                                         |
+| ---------------------------------- | -------------------------------------------- |
+|  **Frontend (Next.js)**            | https://weddlyfrontend.netlify.app           |
+|  **Backend (Express + MongoDB)**   | https://weddly-backend.onrender.com          |
+ 
+
+
+ ### Github Repo
+
+|  App                               | Link                                                |
+| ---------------------------------- | --------------------------------------------        |
+|  **Frontend (Next.js)**            | https://github.com/dikehprosper/weddly-frontend     |
+|  **Backend (Express + MongoDB)**   | https://github.com/dikehprosper/weddly-backend      |
+ 
+
+
 ---
 ## API Documentation
 

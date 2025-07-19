@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
 const mongoose = require('mongoose');
 
 // Booking Schema for wedding coordinator bookings

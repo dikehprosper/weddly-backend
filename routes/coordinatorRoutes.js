@@ -1,4 +1,7 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 // Import Express framework
+// eslint-disable-next-line no-undef
 const express = require('express');
 
 // Import Coordinator model (MongoDB schema)

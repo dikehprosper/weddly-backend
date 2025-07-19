@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
 const mongoose = require('mongoose');
 
 // Coordinator Schema for wedding coordinators listed on the platform
@@ -38,5 +40,5 @@ const CoordinatorSchema = new mongoose.Schema({
     timestamps: true // Automatically adds createdAt and updatedAt fields
 });
 
-// Exporta the Coordinator model
+// Export the Coordinator model
 module.exports = mongoose.model('Coordinator', CoordinatorSchema);
